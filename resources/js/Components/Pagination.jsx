@@ -1,3 +1,4 @@
+import React from 'react';
 import { Link } from '@inertiajs/react';
 import { Pagination as ReactPagination } from 'react-bootstrap';
 

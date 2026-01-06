@@ -1,3 +1,4 @@
+import React from 'react';
 import { Form } from 'react-bootstrap';
 
 export default function TextInput({ label, name, type = 'text', value, onChange, className, error, formControlProps }) {

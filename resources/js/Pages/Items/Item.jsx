@@ -1,3 +1,4 @@
+import React from 'react';
 import CardContainer from '@/Components/CardContainer.jsx';
 import Layout from '@/Layouts/Layout.jsx';
 import UserCard from '@/Pages/Profile/Partials/UserCard.jsx';

@@ -1,3 +1,4 @@
+import React from 'react';
 import { Form } from 'react-bootstrap';
 
 export default function SelectInput({ label, name, options, value, onChange, className, error }) {

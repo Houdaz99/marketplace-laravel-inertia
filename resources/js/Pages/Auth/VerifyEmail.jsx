@@ -1,3 +1,4 @@
+import React from 'react';
 import Layout from '@/Layouts/Layout.jsx';
 import { Head, Link, useForm } from '@inertiajs/react';
 import { Alert, Button, Card, Col, Container, Form, Row } from 'react-bootstrap';

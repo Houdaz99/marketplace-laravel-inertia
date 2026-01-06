@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Providers;
+use App\Models\Item;
+use App\Policies\ItemPolicy;
 
 // use Illuminate\Support\Facades\Gate;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
@@ -13,8 +15,9 @@ class AuthServiceProvider extends ServiceProvider
      * @var array<class-string, class-string>
      */
     protected $policies = [
-        //
-    ];
+    \App\Models\Item::class => \App\Policies\ItemPolicy::class,
+];
+
 
     /**
      * Register any authentication / authorization services.

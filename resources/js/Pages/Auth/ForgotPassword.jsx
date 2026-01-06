@@ -1,6 +1,6 @@
+import React from 'react';
 import Layout from '@/Layouts/Layout';
 import { Head, useForm } from '@inertiajs/react';
-import { Alert, Button, Card, Col, Container, Form, Row } from 'react-bootstrap';
 
 export default function ForgotPassword({ status }) {
   const { data, setData, post, processing, errors } = useForm({
@@ -9,7 +9,6 @@ export default function ForgotPassword({ status }) {
 
   const submit = e => {
     e.preventDefault();
-
     post(route('password.email'));
   };
 
@@ -17,47 +16,51 @@ export default function ForgotPassword({ status }) {
     <Layout>
       <Head title="Forgot Password" />
 
-      <Container className="my-5">
-        <Row className="justify-content-md-center">
-          <Col lg="5" md="8">
-            <Card>
-              <Card.Body className="m-2">
-                <Card.Title>
-                  <h2 className="text-center">Forgot Password</h2>
-                </Card.Title>
-                <div className="mb-4 text-sm text-gray-600">
-                  Enter your email address and we will send you a password reset link.
-                </div>
+      <div className="min-h-screen bg-gradient-to-tr from-gray-100 via-gray-200 to-gray-300 flex items-center justify-center px-4">
+        <div className="bg-white rounded-2xl shadow-2xl max-w-md w-full p-10">
+          <h1 className="text-4xl font-extrabold text-[#8B0000] text-center mb-6 tracking-wide">
+            Forgot Password
+          </h1>
 
-                {status && (
-                  <Alert variant="success" className="mb-4">
-                    {status}
-                  </Alert>
-                )}
+          <p className="text-center text-gray-600 mb-8">
+            Enter your email address and we will send you a password reset link.
+          </p>
 
-                <Form onSubmit={submit}>
-                  <Form.Group controlId="email" className="my-4">
-                    <Form.Label>Email</Form.Label>
-                    <Form.Control
-                      type="email"
-                      value={data.email}
-                      autoComplete="username"
-                      onChange={e => setData('email', e.target.value)}
-                    />
-                    {errors.email && <Form.Text className="text-danger">{errors.email}</Form.Text>}
-                  </Form.Group>
+          {status && (
+            <div className="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded mb-6" role="alert">
+              {status}
+            </div>
+          )}
 
-                  <div className="d-grid">
-                    <Button variant="primary" type="submit" disabled={processing}>
-                      {processing ? 'Sending...' : 'Send Password Reset Link'}
-                    </Button>
-                  </div>
-                </Form>
-              </Card.Body>
-            </Card>
-          </Col>
-        </Row>
-      </Container>
+          <form onSubmit={submit} className="space-y-6">
+            <div>
+              <label htmlFor="email" className="block text-gray-800 font-semibold mb-2 text-lg">
+                Email Address
+              </label>
+              <input
+                id="email"
+                type="email"
+                autoComplete="username"
+                value={data.email}
+                onChange={e => setData('email', e.target.value)}
+                placeholder="you@example.com"
+                className={`w-full rounded-xl border px-4 py-3 text-lg focus:outline-none focus:ring-2 focus:ring-[#8B0000] transition ${
+                  errors.email ? 'border-red-500' : 'border-gray-300'
+                }`}
+              />
+              {errors.email && <p className="text-red-600 mt-2 text-sm">{errors.email}</p>}
+            </div>
+
+            <button
+              type="submit"
+              disabled={processing}
+              className="w-full text-[#8B0000] font-bold text-xl underline py-3 rounded-xl border border-[#8B0000] hover:bg-[#8B0000] hover:text-white transition"
+            >
+              {processing ? 'Sending...' : 'Send Password Reset Link'}
+            </button>
+          </form>
+        </div>
+      </div>
     </Layout>
   );
 }

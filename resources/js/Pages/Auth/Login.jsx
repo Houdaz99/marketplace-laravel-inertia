@@ -1,7 +1,6 @@
+import React, { useEffect } from 'react';
 import Layout from '@/Layouts/Layout.jsx';
 import { Head, Link, useForm } from '@inertiajs/react';
-import { useEffect } from 'react';
-import { Alert, Button, Card, Col, Container, Form, Row } from 'react-bootstrap';
 
 export default function Login({ status, canResetPassword }) {
   const { data, setData, post, processing, errors, reset } = useForm({
@@ -18,7 +17,6 @@ export default function Login({ status, canResetPassword }) {
 
   const submit = e => {
     e.preventDefault();
-
     post(route('login'));
   };
 
@@ -26,67 +24,91 @@ export default function Login({ status, canResetPassword }) {
     <Layout>
       <Head title="Log in" />
 
-      {status && <Alert variant="success">{status}</Alert>}
+      <div className="min-h-screen flex items-center justify-center bg-gray-100 font-['Roboto']">
+        <div className="flex w-[90%] max-w-4xl h-[600px] rounded-2xl overflow-hidden shadow-2xl bg-white transition duration-300">
+          {/* FORMULAIRE */}
+          <div className="w-1/2 p-10 flex flex-col justify-center items-center border-r-2 border-[#d4af37] shadow-md">
+            <div className="mb-8 flex justify-center">
+              <img
+                src="/images/DALL·E 2025-01-12 14.30.10 - A creative and elegant logo design for an online marketplace named 'Élégance,' specializing in traditional Arab clothing. The logo should include Arab.webp"
+                alt="Logo Élégance"
+                className="w-24 h-24 rounded-full shadow-lg hover:scale-110 transition-transform duration-300"
+              />
+            </div>
+            <h2 className="text-3xl font-medium text-[#800000] mb-6 text-center">Connexion</h2>
 
-      <Container className="my-5">
-        <Row className="justify-content-md-center">
-          <Col lg="5" md="8">
-            <Card>
-              <Card.Body className="m-2">
-                <Card.Title>
-                  <h2 className="text-center">Log in</h2>
-                </Card.Title>
-                <Form onSubmit={submit}>
-                  <Form.Group controlId="email" className="my-4">
-                    <Form.Label>Email</Form.Label>
-                    <Form.Control
-                      type="email"
-                      value={data.email}
-                      autoComplete="username"
-                      onChange={e => setData('email', e.target.value)}
-                    />
-                    {errors.email && <Form.Text className="text-danger">{errors.email}</Form.Text>}
-                  </Form.Group>
+            {status && <div className="text-green-600 text-sm mb-4">{status}</div>}
 
-                  <Form.Group controlId="password" className="my-4">
-                    <Form.Label>Password</Form.Label>
-                    <Form.Control
-                      type="password"
-                      value={data.password}
-                      autoComplete="current-password"
-                      onChange={e => setData('password', e.target.value)}
-                    />
-                    {errors.password && <Form.Text className="text-danger">{errors.password}</Form.Text>}
-                  </Form.Group>
+            <form onSubmit={submit} className="w-full">
+              <input
+                type="email"
+                placeholder="Email"
+                value={data.email}
+                onChange={e => setData('email', e.target.value)}
+                autoComplete="username"
+                className="w-full p-4 mb-4 border-2 border-[#d4af37] rounded-xl bg-gray-100 focus:outline-none focus:ring-2 focus:ring-[#800000]"
+              />
+              {errors.email && <p className="text-red-500 text-sm mb-2">{errors.email}</p>}
 
-                  <Form.Group controlId="remember" className="my-4">
-                    <Form.Check
-                      type="checkbox"
-                      label="Remember me"
-                      checked={data.remember}
-                      onChange={e => setData('remember', e.target.checked)}
-                    />
-                  </Form.Group>
+              <input
+                type="password"
+                placeholder="Mot de passe"
+                value={data.password}
+                onChange={e => setData('password', e.target.value)}
+                autoComplete="current-password"
+                className="w-full p-4 mb-4 border-2 border-[#d4af37] rounded-xl bg-gray-100 focus:outline-none focus:ring-2 focus:ring-[#800000]"
+              />
+              {errors.password && <p className="text-red-500 text-sm mb-2">{errors.password}</p>}
 
-                  <div className="d-grid">
-                    <Button variant="primary" type="submit" disabled={processing}>
-                      {processing ? 'Logging in...' : 'Log in'}
-                    </Button>
-                  </div>
+              <div className="mb-4 flex items-center">
+                <input
+                  type="checkbox"
+                  id="remember"
+                  checked={data.remember}
+                  onChange={e => setData('remember', e.target.checked)}
+                  className="mr-2"
+                />
+                <label htmlFor="remember" className="text-sm text-gray-700">Se souvenir de moi</label>
+              </div>
 
-                  {canResetPassword && (
-                    <div className="mt-3">
-                      <Link href={route('password.request')} className="text-decoration-none">
-                        Forgot your password?
-                      </Link>
-                    </div>
-                  )}
-                </Form>
-              </Card.Body>
-            </Card>
-          </Col>
-        </Row>
-      </Container>
+              <button
+                type="submit"
+                disabled={processing}
+                className="w-full p-4 bg-[#800000] text-white font-bold rounded-xl hover:bg-[#b22222] transition duration-300"
+              >
+                {processing ? 'Connexion...' : 'Se connecter'}
+              </button>
+
+              {canResetPassword && (
+                <div className="mt-4 text-center">
+                  <Link
+                    href={route('password.request')}
+                    className="text-sm text-[#800000] hover:text-[#d4af37] hover:underline"
+                  >
+                    Mot de passe oublié ?
+                  </Link>
+                </div>
+              )}
+
+              <div className="mt-2 text-center">
+                <Link href={route('register')} className="text-sm text-[#800000] hover:text-[#d4af37] hover:underline">
+                  S'inscrire
+                </Link>
+              </div>
+            </form>
+          </div>
+
+          {/* IMAGE */}
+          <div
+            className="w-1/2 bg-cover bg-center relative border-l-2 border-[#d4af37]"
+            style={{
+    backgroundImage: "url('/images/login_image.png')",
+  }}
+          >
+            <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent rounded-r-2xl"></div>
+          </div>
+        </div>
+      </div>
     </Layout>
   );
 }

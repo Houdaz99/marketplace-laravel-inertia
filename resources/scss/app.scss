@@ -1,10 +1,14 @@
-// App
+/* app.scss */
 
-/* stylelint-disable scss/load-no-partial-leading-underscore */
+// 1. Tailwind directives
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-@import "_bootstrap";
-@import "_font";
-@import "_layout";
-@import "_navbar";
-@import "_scrollbar";
-@import "_sidebar";
+// 2. Google Fonts (optionnel)
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;700&display=swap');
+
+// 3. Styles globaux (tu peux aussi les faire en @apply)
+body {
+  @apply bg-body font-sans;
+}

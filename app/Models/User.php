@@ -24,6 +24,7 @@ class User extends Authenticatable
         'bio',
         'location',
         'password',
+        'role', // ✅ Ajout du champ "role"
     ];
 
     /**
@@ -55,4 +56,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Item::class);
     }
+    public function carts()
+{
+    return $this->hasMany(Cart::class);
+}
+
 }

@@ -1,3 +1,4 @@
+import React from 'react';
 import Layout from '@/Layouts/Layout.jsx';
 import { Head } from '@inertiajs/react';
 import { Container } from 'react-bootstrap';

@@ -1,3 +1,4 @@
+import React from 'react';
 import Layout from '@/Layouts/Layout.jsx';
 import { Head, useForm } from '@inertiajs/react';
 import { useEffect } from 'react';

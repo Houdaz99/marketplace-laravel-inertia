@@ -1,3 +1,4 @@
+import React from 'react';
 import RangeInput from '@/Components/Inputs/RangeInput.jsx';
 import SelectInput from '@/Components/Inputs/SelectInput.jsx';
 import TextInput from '@/Components/Inputs/TextInput.jsx';

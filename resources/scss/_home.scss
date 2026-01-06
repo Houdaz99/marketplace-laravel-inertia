@@ -1,0 +1,83 @@
+// _home.scss
+@use "bootstrap" as bs;
+
+.elegance-home {
+  // En-tête
+  .shop-header {
+    text-align: center;
+    margin-bottom: bs.$spacer * 2;
+
+    .shop-title {
+      font-size: 2.5rem;
+      color: bs.$gray-900;
+      margin-bottom: bs.$spacer;
+    }
+  }
+
+  // Navigation catégories
+  .categories-nav {
+    display: flex;
+    justify-content: center;
+    gap: bs.$spacer * 1.5;
+    flex-wrap: wrap;
+    padding: bs.$spacer 0;
+    border-bottom: 1px solid bs.$gray-300;
+    margin-bottom: bs.$spacer * 3;
+
+    .category-link {
+      color: bs.$gray-700;
+      text-decoration: none;
+      font-weight: bs.$font-weight-medium;
+      transition: color 0.3s ease;
+
+      &:hover {
+        color: bs.$primary;
+      }
+    }
+  }
+
+  // Panier
+  .cart-sidebar {
+    @extend .card, .p-4, .sticky-top;
+    top: bs.$spacer * 1.5;
+
+    .cart-title {
+      @extend .h4;
+      margin-bottom: bs.$spacer;
+    }
+
+    .cart-notice {
+      @extend .text-muted, .small;
+      margin-bottom: bs.$spacer * 1.5;
+    }
+
+    .cart-items {
+      @extend .list-unstyled;
+      margin-bottom: bs.$spacer * 1.5;
+
+      .cart-item {
+        @extend .d-flex, .justify-content-between, .py-2;
+        border-bottom: 1px solid bs.$gray-200;
+      }
+    }
+
+    .cart-total {
+      @extend .d-flex, .justify-content-between, .py-3, .fw-bold;
+      border-top: 1px solid bs.$gray-300;
+      border-bottom: 1px solid bs.$gray-300;
+      margin: bs.$spacer * 1.5 0;
+    }
+
+    .cart-actions {
+      @extend .d-grid, .gap-2;
+
+      .checkout-btn {
+        @extend .btn, .btn-dark;
+      }
+
+      .delete-btn {
+        @extend .btn, .btn-outline-danger;
+      }
+    }
+  }
+}
